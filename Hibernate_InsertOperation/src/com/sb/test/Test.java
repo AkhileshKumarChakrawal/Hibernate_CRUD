@@ -16,10 +16,10 @@ public class Test {
 		Session session = sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
 		Employee emp = new Employee();
-		emp.setEno(103);
-		emp.setEname("Rajeev");
-		emp.setEsal(8000);
-		emp.setEaddr("CNB");
+		emp.setEno(104);
+		emp.setEname("Sharda");
+		emp.setEsal(9000);
+		emp.setEaddr("Ndls");
 		//int eno = (Integer)session.save(ts);
 		session.persist(emp);
 		tx.commit();
