@@ -17,11 +17,6 @@ public class Test {
 		PhoneNumber phone1= null;
 		PhoneNumber phone2=null;
 		Set<PhoneNumber> set =null;
-		Configuration config = new Configuration();
-		config.configure("com/sb/user/hibernate.cfg.xml");;
-		SessionFactory factory = config.buildSessionFactory();
-		Session session = factory.openSession();
-		Transaction tx = session.beginTransaction();
 		
 		User user = new User();
 		user.setUserId(1001);
@@ -42,17 +37,32 @@ public class Test {
 		set.add(phone1);
 		set.add(phone2);
 		user.setPhones(set);
+		
+		Configuration config=null;
+		SessionFactory factory=null;
+		Session session=null;
+		Transaction tx = null;
+		try {
+		 config = new Configuration();
+		config.configure("com/sb/user/hibernate.cfg.xml");;
+		factory = config.buildSessionFactory();
+		 session = factory.openSession();
+		tx = session.beginTransaction();
 		int userId1 = (Integer)session.save(user);
 		tx.commit();
-		if(userId1 == 1001) {
 			System.out.println("Users Record Inserted");
 		}
-		else {
+		catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			tx.rollback();
 			System.out.println("Users insertion failur");
 		}
+		finally {
+			session.close();
+			factory.close();
+		}
 		
-		session.close();
-		factory.close();
 	}
 
 }
