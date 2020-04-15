@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+    <hibernate-mapping>
+    <class name="com.sb.user.User" table="user_table">
+    <id name = "userId"/>
+    <property name="firstName"/>
+    <property name="lastName"/>
+    <property name="addrs" column="ADDRESS"/>
+    <set name="phones" cascade="all">
+    <key column="user_id"/>
+    <one-to-many class="com.sb.user.PhoneNumber"/>
+    </set>
+    </class>
+    </hibernate-mapping>
