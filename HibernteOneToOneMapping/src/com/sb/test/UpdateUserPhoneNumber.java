@@ -1,5 +1,8 @@
 package com.sb.test;
 
+import java.util.List;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -8,21 +11,9 @@ import org.hibernate.cfg.Configuration;
 import com.sb.user.PhoneNumber;
 import com.sb.user.User;
 
-public class Test {
+public class UpdateUserPhoneNumber {
 
 	public static void main(String[] args) {
-		PhoneNumber phone1= null;
-		User user = new User();
-		user.setUserId(1003);
-		user.setFirstName("Radhey");
-		user.setLastName("Singh");
-		user.setAddrs("UP");
-		phone1 =new PhoneNumber();
-		phone1.setPhone(952594755);
-		phone1.setNumberType("office");
-		phone1.setProvider("idea");
-		phone1.setUserId(1003);
-		user.setPhones(phone1);
 		
 		Configuration config=null;
 		SessionFactory factory=null;
@@ -31,14 +22,16 @@ public class Test {
 		
 		try {
 		 config = new Configuration();
-		config.configure("com/sb/user/hibernate.cfg.xml");
+		config.configure("com/sb/user/hibernate.cfg.xml");;
 		factory = config.buildSessionFactory();
 		session = factory.openSession();
-		tx = session.beginTransaction();
-		
-		int userId1 = (Integer)session.save(user);
-		tx.commit();
-			System.out.println("Users Record Inserted");
+		Query query= session.createQuery("from User");
+		List<User>list = query.list();
+		for(User user: list) {
+			System.out.println("parent===>"+user);
+			PhoneNumber number = user.getPhones();
+			System.out.println("child--->"+number);
+		}
 		
 		}
 		catch (Exception e) {
@@ -51,6 +44,6 @@ public class Test {
 		session.close();
 		factory.close();
 		}
-	}
 
+	}
 }

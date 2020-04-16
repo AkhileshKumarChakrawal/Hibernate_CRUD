@@ -2,13 +2,21 @@ package com.sb.user;
 
 public class PhoneNumber {
 
-	private long phone;
+	private int phone;
 	private String numberType;
 	private String provider;
-	public long getPhone() {
+	private int userId;
+	private User user;
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	public int getPhone() {
 		return phone;
 	}
-	public void setPhone(long phone) {
+	public void setPhone(int phone) {
 		this.phone = phone;
 	}
 	public String getNumberType() {
@@ -22,6 +30,12 @@ public class PhoneNumber {
 	}
 	public void setProvider(String provider) {
 		this.provider = provider;
+	}
+	public int getUserId() {
+		return userId;
+	}
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
 }
