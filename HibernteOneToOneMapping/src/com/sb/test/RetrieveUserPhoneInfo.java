@@ -40,6 +40,7 @@ public class RetrieveUserPhoneInfo {
 			System.out.println("Users insertion failur");
 		}
 		finally {
+			
 		session.close();
 		factory.close();
 		}
