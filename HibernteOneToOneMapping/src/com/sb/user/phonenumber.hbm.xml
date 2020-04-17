@@ -7,9 +7,9 @@
     <id name="phone"/>
     <property name="numberType"/>
     <property name="provider"/>
-    <property name="userId"/>
     
-        <one-to-one name="user" cascade="all" class="com.sb.user.User"/>
+    
+        <many-to-one name="user" class="com.sb.user.User" column="userId" cascade="all" lazy="proxy"/>
     
     </class>
     

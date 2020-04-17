@@ -10,7 +10,7 @@
     <property name="lastName"/>
     <property name="addrs" column="ADDRESS"/>
     
-    <one-to-one name="phones" cascade="all" class="com.sb.user.PhoneNumber"/>
+   <!--  <one-to-one name="phones" cascade="all" class="com.sb.user.PhoneNumber"/> -->
     
     </class>
     </hibernate-mapping>

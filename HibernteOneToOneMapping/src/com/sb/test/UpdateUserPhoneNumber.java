@@ -29,8 +29,7 @@ public class UpdateUserPhoneNumber {
 		List<User>list = query.list();
 		for(User user: list) {
 			System.out.println("parent===>"+user);
-			PhoneNumber number = user.getPhones();
-			System.out.println("child--->"+number);
+		
 		}
 		
 		}

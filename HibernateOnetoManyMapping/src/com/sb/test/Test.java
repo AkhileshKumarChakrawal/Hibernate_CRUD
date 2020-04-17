@@ -16,26 +16,38 @@ public class Test {
 	public static void main(String[] args)throws Exception {
 		PhoneNumber phone1= null;
 		PhoneNumber phone2=null;
+		PhoneNumber phone3=null;
+		PhoneNumber phone4=null;
 		Set<PhoneNumber> set =null;
 		
 		User user = new User();
-		user.setUserId(1001);
-		user.setFirstName("Ram");
+		user.setUserId(1004);
+		user.setFirstName("Jagdish");
 		user.setLastName("Kumar");
-		user.setAddrs("vns");
+		user.setAddrs("Ranchi");
 		phone1 =new PhoneNumber();
-		phone1.setPhone(8888);
-		phone1.setNumberType("residence");
-		phone1.setProvider("airtel");
+		phone1.setPhone(865484);
+		phone1.setNumberType("personal");
+		phone1.setProvider("jio");
 		
 		phone2 = new PhoneNumber();
-		phone2.setPhone(88888);
+		phone2.setPhone(785875);
 		phone2.setNumberType("office");
 		phone2.setProvider("jio");
-		
+		/*
+		phone3 = new PhoneNumber();
+		phone3.setPhone(958485);
+		phone3.setNumberType("business");
+		phone3.setProvider("idea");
+		phone4= new PhoneNumber();
+		phone4.setPhone(99485);
+		phone4.setNumberType("personal");
+		phone4.setProvider("vodaphone");*/
 		set =new HashSet();
 		set.add(phone1);
 		set.add(phone2);
+		/*set.add(phone3);
+		set.add(phone4);*/
 		user.setPhones(set);
 		
 		Configuration config=null;

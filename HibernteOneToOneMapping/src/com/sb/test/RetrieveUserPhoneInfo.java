@@ -19,19 +19,23 @@ public class RetrieveUserPhoneInfo {
 		Session session=null;
 		Transaction tx=null;
 		
+		User user=null;
+		PhoneNumber number =null;
 		try {
 		 config = new Configuration();
 		config.configure("com/sb/user/hibernate.cfg.xml");;
 		factory = config.buildSessionFactory();
 		session = factory.openSession();
-		Query query= session.createQuery("from User");
-		List<User>list = query.list();
-		for(User user: list) {
-			System.out.println("parent===>"+user);
-			PhoneNumber number = user.getPhones();
-			System.out.println("child--->"+number);
-		}
 		
+		Query query = session.createQuery("from PhoneNumber");
+		List<PhoneNumber> list = query.list();
+		for(PhoneNumber numbers : list) {
+			System.out.println("Child===>"+numbers);
+			System.out.println(numbers.getProvider()+" "+numbers.getPhone());
+			User users = numbers.getUser();
+			System.out.println("parent==>"+users);
+			System.out.println(users.getUserId()+" "+users.getFirstName()+" "+users.getAddrs());
+		}
 		}
 		catch (Exception e) {
 			// TODO: handle exception

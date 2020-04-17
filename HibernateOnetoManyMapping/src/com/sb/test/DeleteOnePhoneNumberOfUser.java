@@ -1,5 +1,7 @@
 package com.sb.test;
 
+import java.util.Set;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -8,38 +10,24 @@ import org.hibernate.cfg.Configuration;
 import com.sb.user.PhoneNumber;
 import com.sb.user.User;
 
-public class Test {
+public class DeleteOnePhoneNumberOfUser {
 
 	public static void main(String[] args) {
-		PhoneNumber phone1= null;
-		User user = new User();
-		user.setUserId(1003);
-		user.setFirstName("Radhey");
-		user.setLastName("Singh");
-		user.setAddrs("UP");
-		phone1 =new PhoneNumber();
-		phone1.setPhone(952594755);
-		phone1.setNumberType("office");
-		phone1.setProvider("idea");
-		
-		//user.setPhones(phone1);
-		
 		Configuration config=null;
 		SessionFactory factory=null;
 		Session session=null;
-		Transaction tx=null;
+		Transaction tx = null;
 		
 		try {
 		 config = new Configuration();
 		config.configure("com/sb/user/hibernate.cfg.xml");
 		factory = config.buildSessionFactory();
-		session = factory.openSession();
+		 session = factory.openSession();
+		 User user= session.load(User.class, 1004);
+		Set<PhoneNumber> childs =  user.getPhones();
 		tx = session.beginTransaction();
-		
-		int userId1 = (Integer)session.save(user);
+		childs.clear();
 		tx.commit();
-			System.out.println("Users Record Inserted");
-		
 		}
 		catch (Exception e) {
 			// TODO: handle exception
@@ -48,9 +36,11 @@ public class Test {
 			System.out.println("Users insertion failur");
 		}
 		finally {
-		session.close();
-		factory.close();
+			session.close();
+			factory.close();
 		}
+		
 	}
+
 
 }

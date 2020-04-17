@@ -5,8 +5,9 @@ public class PhoneNumber {
 	private int phone;
 	private String numberType;
 	private String provider;
-	private int userId;
+	
 	private User user;
+	
 	public User getUser() {
 		return user;
 	}
@@ -31,11 +32,5 @@ public class PhoneNumber {
 	public void setProvider(String provider) {
 		this.provider = provider;
 	}
-	public int getUserId() {
-		return userId;
-	}
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
-
+	
 }

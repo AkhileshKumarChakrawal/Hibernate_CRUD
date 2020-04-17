@@ -8,37 +8,37 @@ import org.hibernate.cfg.Configuration;
 import com.sb.user.PhoneNumber;
 import com.sb.user.User;
 
-public class Test {
+public class SaveDataUsingPhoneNumber {
 
 	public static void main(String[] args) {
-		PhoneNumber phone1= null;
-		User user = new User();
-		user.setUserId(1003);
-		user.setFirstName("Radhey");
-		user.setLastName("Singh");
-		user.setAddrs("UP");
-		phone1 =new PhoneNumber();
-		phone1.setPhone(952594755);
-		phone1.setNumberType("office");
-		phone1.setProvider("idea");
-		
-		//user.setPhones(phone1);
-		
+		// TODO Auto-generated method stub
 		Configuration config=null;
 		SessionFactory factory=null;
 		Session session=null;
 		Transaction tx=null;
 		
+		User user=null;
+		PhoneNumber number =null;
 		try {
 		 config = new Configuration();
-		config.configure("com/sb/user/hibernate.cfg.xml");
+		config.configure("com/sb/user/hibernate.cfg.xml");;
 		factory = config.buildSessionFactory();
 		session = factory.openSession();
-		tx = session.beginTransaction();
+		user = new User();
+		user.setUserId(1006);
+		user.setFirstName("Shiva");
+		user.setLastName("Rao");
+		user.setAddrs("hyd");
 		
-		int userId1 = (Integer)session.save(user);
+		number = new PhoneNumber();
+		number.setNumberType("office");
+		number.setPhone(9842584);
+		number.setProvider("jio");
+		number.setUser(user);
+		tx=session.beginTransaction();
+		session.save(number);
 		tx.commit();
-			System.out.println("Users Record Inserted");
+		System.out.println("object inserted");
 		
 		}
 		catch (Exception e) {
@@ -48,9 +48,12 @@ public class Test {
 			System.out.println("Users insertion failur");
 		}
 		finally {
+			
 		session.close();
 		factory.close();
 		}
+
+
 	}
 
 }

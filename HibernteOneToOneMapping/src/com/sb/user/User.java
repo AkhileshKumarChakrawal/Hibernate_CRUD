@@ -8,15 +8,7 @@ public class User {
 	private String firstName;
 	private String lastName;
 	private String addrs;
-	private PhoneNumber phones;
 	
-
-	public PhoneNumber getPhones() {
-		return phones;
-	}
-	public void setPhones(PhoneNumber phones) {
-		this.phones = phones;
-	}
 	public int getUserId() {
 		return userId;
 	}
