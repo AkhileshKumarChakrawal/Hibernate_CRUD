@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+    
+    <hibernate-mapping>
+    <class name="com.sb.entity.Cart" table="cart">
+    <id name="id" type="long" column="cart_id"/>
+    <property name="total" type="double" column="cart_total"/>
+    <set name="items" table="cart_items" cascade="all">
+    <key column="cart_id"/>
+    <many-to-many class="com.sb.entity.Item" column="item_id"></many-to-many>
+    </set>
+    </class>
+    </hibernate-mapping>

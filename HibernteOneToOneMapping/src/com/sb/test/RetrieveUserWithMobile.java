@@ -11,7 +11,7 @@ import org.hibernate.cfg.Configuration;
 import com.sb.user.PhoneNumber;
 import com.sb.user.User;
 
-public class RetrieveUserPhoneInfo {
+public class RetrieveUserWithMobile {
 
 	public static void main(String[] args) {
 		Configuration config=null;
@@ -23,16 +23,16 @@ public class RetrieveUserPhoneInfo {
 		PhoneNumber number =null;
 		try {
 		 config = new Configuration();
-		config.configure("com/sb/user/hibernate.cfg.xml");;
+		config.configure("com/sb/user/hibernate.cfg.xml");
 		factory = config.buildSessionFactory();
 		session = factory.openSession();
 		
-		Query query = session.createQuery("from PhoneNumber");
-		List<PhoneNumber> list = query.list();
-		for(PhoneNumber numbers : list) {
-			System.out.println("Child===>"+numbers);
-			System.out.println(numbers.getProvider()+" "+numbers.getPhone());
-			User users = numbers.getUser();
+		Query query = session.createQuery("from User");
+		List<User> list = query.list();
+		for(User users : list) {
+			System.out.println("Child===>"+users);
+			System.out.println(users.getUserId()+" "+users.getFirstName()+" "+users.getAddrs());
+			 
 			System.out.println("parent==>"+users);
 			System.out.println(users.getUserId()+" "+users.getFirstName()+" "+users.getAddrs());
 			System.out.println("======================");
@@ -49,6 +49,7 @@ public class RetrieveUserPhoneInfo {
 		session.close();
 		factory.close();
 		}
+
 
 	}
 

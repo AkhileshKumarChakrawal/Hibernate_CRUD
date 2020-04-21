@@ -11,6 +11,8 @@
         <property name="hibernate.connection.password">root</property>
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.htm2ddl.auto">validate</property>
+        <property name="hibernate.format_sql">true</property>
 <mapping resource="com/sb/user/user.hbm.xml"/>
 <mapping resource="com/sb/user/phoneNumber.hbm.xml"/>
 </session-factory>

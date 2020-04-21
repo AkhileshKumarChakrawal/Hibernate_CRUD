@@ -6,14 +6,12 @@
 <hibernate-configuration>
 <session-factory>
  <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hb_mapping</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/employee</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">root</property>
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-        <property name="hibernate.htm2ddl.auto">validate</property>
-        <property name="hibernate.format_sql">true</property>
-<mapping resource="com/sb/user/user.hbm.xml"/>
-<mapping resource="com/sb/user/phoneNumber.hbm.xml"/>
+<mapping resource="com/sb/entity/cart.hbm.xml"/>
+<mapping resource="com/sb/entity/item.hbm.xml"/>
 </session-factory>
 </hibernate-configuration>
